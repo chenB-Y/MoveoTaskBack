@@ -1,24 +1,15 @@
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  getFirestore,
-  setDoc,
-} from '@firebase/firestore';
+import { doc, getDoc, getFirestore, setDoc } from '@firebase/firestore';
 import { Request, Response } from 'express';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  Auth,
 } from 'firebase/auth';
 
 const register = async (req: Request, res: Response) => {
   console.log('register');
   const { email, password, username, instrument } = req.body;
-  console.log(email, password, username, instrument);
 
   if (!email || !password) {
     return res.status(400).send('Email or password not provided');
@@ -61,7 +52,6 @@ const register = async (req: Request, res: Response) => {
 const login = async (req: Request, res: Response) => {
   console.log('login');
   const { email, password } = req.body;
-  console.log(`${email} ${password}`);
 
   if (!email || !password) {
     return res.status(400).send('Email or password not provided');

@@ -61,12 +61,12 @@ io.on('connection', (socket) => {
   console.log('A user connected', socket.id);
 
   socket.on('startLiveInstruments', (res, name, artist) => {
-    console.log('startLive from clientId:', socket.id);
+    console.log('startLiveIns from clientId:', socket.id);
     socket.broadcast.emit('startLiveInstruments', res, name, artist);
   });
 
   socket.on('startLiveSingers', (res, name, artist) => {
-    console.log('startLive from clientId:', socket.id);
+    console.log('startLiveSin from clientId:', socket.id);
     socket.broadcast.emit('startLiveSingers', res, name, artist);
   });
 
@@ -92,6 +92,3 @@ expressApp.get('/hello', (req, res) => {
 server.listen(3000, '0.0.0.0', () => {
   console.log(`Server is running !!`);
 });
-
-// Export services
-export { auth, db };

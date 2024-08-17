@@ -8,7 +8,6 @@ const searchSongs = async (req: Request, res: Response) => {
   const songName = req.body.songName;
   console.log('Searching for songs with name:', songName);
   const url = `https://www.tab4u.com/resultsSimple?tab=songs&q=${songName}`;
-  console.log('url:', url);
 
   try {
     const response = await axios.get(url);
