@@ -47,7 +47,9 @@ const io = new SocketIOServer(server, {
 
 expressApp.use(
   cors({
-    origin: 'https://moveotaskback-production.up.railway.app/auth/login',
+    origin: 'https://moveotaskfront-production-8bc4.up.railway.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   })
 );
