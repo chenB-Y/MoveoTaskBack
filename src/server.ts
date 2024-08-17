@@ -74,6 +74,10 @@ expressApp.use('/auth', authRoute);
 expressApp.use('/admin', adminRoute);
 expressApp.use('/song', songRoute);
 
+expressApp.get('/hello', (req, res) => {
+  res.send('Server is running');
+});
+
 // Start the server
 server.listen(3000, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
