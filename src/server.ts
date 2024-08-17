@@ -38,7 +38,7 @@ const server = http.createServer(expressApp);
 const io = new SocketIOServer(server, {
   cors: {
     //origin: 'http://localhost:5173',
-    origin: 'https://moveotaskback-production.up.railway.app/',
+    origin: 'https://moveotaskback-production.up.railway.app/auth/login',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
@@ -47,7 +47,7 @@ const io = new SocketIOServer(server, {
 
 expressApp.use(
   cors({
-    origin: 'https://moveotaskback-production.up.railway.app/',
+    origin: 'https://moveotaskback-production.up.railway.app/auth/login',
     credentials: true,
   })
 );
