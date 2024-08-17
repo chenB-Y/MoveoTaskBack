@@ -8,16 +8,17 @@ import cors from 'cors';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+require('dotenv').config();
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBNrbT_-FImoD_7D0WNZD-YGk5LOt1HFvY',
-  authDomain: 'moveotask-d9492.firebaseapp.com',
-  projectId: 'moveotask-d9492',
-  storageBucket: 'moveotask-d9492.appspot.com',
-  messagingSenderId: '791375418610',
-  appId: '1:791375418610:web:287eca231bbf2dc7d6ec6b',
-  measurementId: 'G-WK7VYJ9YKP',
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -37,8 +38,8 @@ const server = http.createServer(expressApp);
 // Initialize Socket.IO with the HTTP server
 const io = new SocketIOServer(server, {
   cors: {
-    origin: 'https://moveotaskfront-production-8bc4.up.railway.app',
-    //origin: 'http://localhost:5173',
+    //origin: process.env.FRONTEND_URL_PROD,
+    origin: process.env.FRONTEND_URL_PROD,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -47,8 +48,8 @@ const io = new SocketIOServer(server, {
 
 expressApp.use(
   cors({
-    origin: 'https://moveotaskfront-production-8bc4.up.railway.app',
-    //origin: 'http://localhost:5173',
+    //origin: process.env.FRONTEND_URL_PROD,
+    origin: process.env.FRONTEND_URL_PROD,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
