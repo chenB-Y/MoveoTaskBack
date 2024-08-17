@@ -29,11 +29,18 @@ const searchSongs = async (req: Request, res: Response) => {
       const artist = $(el).siblings('.aNameI19').text().trim(); // Find the sibling element with class aNameI19
       const href = $(el).closest('a').attr('href');
 
+      // Find the span element with the class ruArtPhoto relZ within the same context
+      const imageSpan = $(el).closest('a').find('span.ruArtPhoto.relZ');
+      const backgroundImage = imageSpan.css('background-image');
+      const urlMatch = backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+      const imageUrl = urlMatch ? urlMatch[1] : '';
+
       // Push each song as an object into the array
       songs.push({
         songTitle: songTitle,
         artist: artist,
         href: href ? `https://www.tab4u.com/${href}` : '', // Prepend base URL if needed
+        imageUrl: `https://www.tab4u.com${imageUrl}`, // Add the image URL to the result
       });
     });
 

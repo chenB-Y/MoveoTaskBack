@@ -38,6 +38,7 @@ const server = http.createServer(expressApp);
 const io = new SocketIOServer(server, {
   cors: {
     origin: 'https://moveotaskfront-production-8bc4.up.railway.app',
+    //origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -46,7 +47,8 @@ const io = new SocketIOServer(server, {
 
 expressApp.use(
   cors({
-    origin: 'https://moveotaskfront-production-8bc4.up.railway.app',
+    //origin: 'https://moveotaskfront-production-8bc4.up.railway.app',
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
