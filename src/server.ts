@@ -45,7 +45,12 @@ const io = new SocketIOServer(server, {
   },
 });
 
-expressApp.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+expressApp.use(
+  cors({
+    origin: 'moveotaskfront-production-8bc4.up.railway.app',
+    credentials: true,
+  })
+);
 
 // Handle Socket.IO connections
 io.on('connection', (socket) => {
@@ -81,7 +86,7 @@ expressApp.get('/hello', (req, res) => {
 
 // Start the server
 server.listen(3000, '0.0.0.0', () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running !!`);
 });
 
 // Export services
