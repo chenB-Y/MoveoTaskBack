@@ -37,7 +37,8 @@ const server = http.createServer(expressApp);
 // Initialize Socket.IO with the HTTP server
 const io = new SocketIOServer(server, {
   cors: {
-    origin: 'http://localhost:5173',
+    //origin: 'http://localhost:5173',
+    origin: 'moveotaskfront-production-8bc4.up.railway.app',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true,
